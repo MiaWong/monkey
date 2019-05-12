@@ -39,6 +39,10 @@ LOG_CONFIG = {'version': 1,
 
 
 def main():
+    import paramiko._winapi
+    mymap = paramiko._winapi.MemoryMap("a", 8192, paramiko._winapi.get_security_attributes_for_user())
+    with mymap:
+        mymap.write("test")
     global LOG
 
     if 2 > len(sys.argv):
